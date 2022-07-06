@@ -50,10 +50,10 @@ export const createStructure = async () => {
          id serial PRIMARY KEY,
          title VARCHAR(30) NOT NULL,
          userid INTEGER NOT NULL,
-         authorid INTEGER NOT NULL,
-         categoryid INTEGER NOT NULL,
-         FOREIGN KEY (authorid) REFERENCES authors(id) ON DELETE CASCADE,
          FOREIGN KEY (userid) REFERENCES users(id) ON DELETE CASCADE,
+         authorid INTEGER NOT NULL,
+         FOREIGN KEY (authorid) REFERENCES authors(id) ON DELETE CASCADE,
+         categoryid INTEGER NOT NULL,
          FOREIGN KEY (categoryid) REFERENCES categories(id) ON DELETE CASCADE
       );
   `);
@@ -72,8 +72,8 @@ export const createStructure = async () => {
          id serial PRIMARY KEY,
          message VARCHAR(10000) NOT NULL,
          userid INTEGER NOT NULL,
-         bookid INTEGER NOT NULL,
          FOREIGN KEY (userid) REFERENCES users(id) ON DELETE CASCADE,
+         bookid INTEGER NOT NULL,
          FOREIGN KEY (bookid) REFERENCES books(id) ON DELETE CASCADE
       );
   `);
